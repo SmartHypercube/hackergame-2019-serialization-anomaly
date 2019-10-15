@@ -1,0 +1,15 @@
+serializable isolation level:
+user 1: first
+user 2: error
+user 3: not first
+repeatable read (a.k.a. snapshot) isolation level:
+user 1: first
+user 2: first
+Traceback (most recent call last):
+  File "main.py", line 67, in <module>
+    main(psycopg2.extensions.ISOLATION_LEVEL_REPEATABLE_READ)
+  File "main.py", line 60, in main
+    next(c)
+  File "main.py", line 17, in submit
+    assert len(data) <= 1, 'Serialization anomaly!'
+AssertionError: Serialization anomaly!
